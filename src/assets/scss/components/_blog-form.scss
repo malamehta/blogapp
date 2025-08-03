@@ -1,3 +1,4 @@
+@use '../config/variable' as *;
 // src/components/BlogForm.scss
 .blog-form {
   display: flex;
@@ -11,12 +12,12 @@
 
     .form-label {
       font-weight: 500;
-      color: #374151;
+      color: $gray-600;
       font-size: 1rem;
       line-height: 1.2;
 
       .form-required {
-        color: #ef4444;
+        color: $error-500;
         margin-left: 0.125rem;
       }
     }
@@ -24,7 +25,7 @@
     .form-input,
     .form-textarea {
       padding: 0.5rem;
-      border: 0.125rem solid #d1d5db;
+      border: 0.125rem solid $gray-300;
       border-radius: 0.5rem;
       font-size: 0.8rem;
       font-family: inherit;
@@ -33,27 +34,27 @@
 
       &:focus {
         outline: none;
-        border-color: #667eea;
-        box-shadow: 0 0 0 0.1875rem rgba(102, 126, 234, 0.1);
+        border-color: $primary-500;
+        box-shadow: 0 0 0 0.1875rem $focus-ring;
       }
 
       &::placeholder {
-        color: #9ca3af;
+        color: $gray-400;
       }
 
       &:disabled {
-        background: #f9fafb;
-        color: #6b7280;
+        background: $gray-50;
+        color: $gray-500;
         cursor: not-allowed;
       }
 
       // Error state
       &--error {
-        border-color: #ef4444;
+        border-color: $error-500;
         
         &:focus {
-          border-color: #ef4444;
-          box-shadow: 0 0 0 0.1875rem rgba(239, 68, 68, 0.1);
+          border-color: $error-500;
+          box-shadow: 0 0 0 0.1875rem $error-ring;
         }
       }
     }
@@ -65,7 +66,7 @@
     }
 
     .form-error {
-      color: #ef4444;
+      color: $error-500;
       font-size: 0.75rem;
       margin-top: -0.25rem;
       display: flex;
@@ -79,7 +80,7 @@
     }
 
     .form-hint {
-      color: #6b7280;
+      color: $gray-500;
       font-size: 0.75rem;
       margin-top: -0.25rem;
     }
@@ -90,7 +91,7 @@
     gap: 0.75rem;
     justify-content: flex-end;
     padding-top: 1rem;
-    border-top: 0.0625rem solid #e5e7eb;
+    border-top: 0.0625rem solid $gray-200;
 
     @media (max-width: 480px) {
       flex-direction: column-reverse;
@@ -116,16 +117,16 @@
       }
 
       &--primary {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
+            background: $primary-gradient;
+    color: $white;
 
         &:hover:not(:disabled) {
           transform: translateY(-0.0625rem);
-          box-shadow: 0 0.25rem 0.5rem rgba(102, 126, 234, 0.3);
+          box-shadow: 0 0.25rem 0.5rem $shadow-primary;
         }
 
         &:focus {
-          outline: 0.125rem solid #667eea;
+          outline: 0.125rem solid $primary-focus;
           outline-offset: 0.125rem;
         }
 
@@ -136,21 +137,21 @@
 
       &--secondary {
         background: white;
-        color: #374151;
-        border-color: #d1d5db;
+            color: $gray-600;
+    border-color: $gray-300;
 
         &:hover:not(:disabled) {
-          background: #f9fafb;
-          border-color: #9ca3af;
+                background: $gray-50;
+      border-color: $gray-400;
         }
 
         &:focus {
-          outline: 0.125rem solid #6b7280;
+          outline: 0.125rem solid $gray-500;
           outline-offset: 0.125rem;
         }
 
         &:active:not(:disabled) {
-          background: #f3f4f6;
+          background: $gray-100;
         }
       }
 

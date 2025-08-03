@@ -1,3 +1,4 @@
+@use '../config/variable' as *;
 // src/components/Header.scss
 .dashboard-header {
   position: fixed;
@@ -7,7 +8,7 @@
   z-index: 1000;
   background: white;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px $shadow-light;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,21 +16,21 @@
   .dashboard-title {
     .dashboard-title__heading {
       margin: 0;
-      color: #333;
+      color: $text-primary;
       font-size: 1rem;
       font-weight: 600;
     }
 
     .dashboard-title__subtitle {
       margin: 0.2rem 0 0 0;
-      color: #666;
+      color: $text-secondary;
       font-size: 0.8rem;
     }
   }
 
   .logout-button {
-    background: #ef4444;
-    color: white;
+    background: $error-500;
+    color: $white;
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 0.3rem;
@@ -39,11 +40,11 @@
     transition: background-color 0.2s ease;
 
     &:hover {
-      background: #dc2626;
+      background: $error-600;
     }
 
     &:focus {
-      outline: 2px solid #ef4444;
+      outline: 2px solid $error-500;
       outline-offset: 2px;
     }
   }

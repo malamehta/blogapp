@@ -1,23 +1,24 @@
+@use '../config/variable' as *;
 // src/pages/Login.scss
 .auth-container {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: $primary-gradient;
   padding: 1rem;
 
   .auth-card {
-    background: white;
+    background: $surface-primary;
     border-radius: 0.5rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.5rem 1rem $shadow-light;
     padding: 2rem;
     width: 100%;
     max-width: 22rem;
 
     .auth-card__title {
       margin: 0 0 0.4rem 0;
-      color: #333;
+      color: $text-primary;
       font-size: 1.2rem;
       font-weight: 600;
       text-align: center;
@@ -25,7 +26,7 @@
 
     .auth-subtitle {
       margin: 0 0 1.5rem 0;
-      color: #666;
+      color: $text-secondary;
       text-align: center;
       font-size: 0.9rem;
     }
@@ -42,32 +43,32 @@
 
         .form-label {
           font-weight: 500;
-          color: #333;
+          color: $text-primary;
           font-size: 1rem;
         }
 
         .form-input {
           padding: 0.6rem 0.8rem;
-          border: 2px solid #e1e5e9;
+          border: 2px solid $border-light;
           border-radius: 0.4rem;
           font-size: 0.8rem;
           transition: border-color 0.2s ease;
 
           &:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.1);
+            border-color: $primary-500;
+            box-shadow: 0 0 0 0.2rem $focus-ring;
           }
 
           &::placeholder {
-            color: #9ca3af;
+            color: $gray-400;
           }
         }
       }
 
       .auth-button {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
+        background: $primary-gradient;
+        color: $white;
         border: none;
         padding: 0.7rem;
         border-radius: 0.4rem;
@@ -82,7 +83,7 @@
         }
 
         &:focus {
-          outline: 2px solid #667eea;
+          outline: 2px solid $primary-focus;
           outline-offset: 2px;
         }
 
@@ -98,12 +99,12 @@
 
       .auth-footer__text {
         margin: 0;
-        color: #666;
+        color: $text-secondary;
         font-size: 0.8rem;
       }
 
       .auth-link {
-        color: #667eea;
+                  color: $primary-500;
         text-decoration: none;
         font-weight: 500;
 
@@ -112,7 +113,7 @@
         }
 
         &:focus {
-          outline: 2px solid #667eea;
+          outline: 2px solid $primary-focus;
           outline-offset: 2px;
           border-radius: 0.2rem;
         }
@@ -120,13 +121,13 @@
     }
 
     .error-message {
-      background: #fee;
-      color: #c53030;
+          background: $error-50;
+    color: $error-700;
       padding: 0.6rem;
       border-radius: 0.4rem;
       margin-bottom: 1rem;
       text-align: center;
-      border: 1px solid #feb2b2;
+      border: 1px solid $error-200;
       font-size: 0.8rem;
     }
   }

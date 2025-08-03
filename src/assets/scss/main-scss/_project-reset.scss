@@ -1,4 +1,4 @@
-@use '../config/' as *;
+@use '../config/variable' as *;
 
 // Universal box-sizing reset
 *,
@@ -27,8 +27,8 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   line-height: 1.6;
-  color: #333;
-  background-color: #fff;
+  color: $text-primary;
+  background-color: $surface-primary;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -106,7 +106,7 @@ button {
 input,
 textarea {
   &:focus {
-    outline: 0.2rem solid #667eea;
+          outline: 0.2rem solid $primary-focus;
     outline-offset: 0.2rem;
   }
 }
@@ -163,7 +163,7 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 0.2rem solid #667eea;
+        outline: 0.2rem solid $primary-focus;
   outline-offset: 0.2rem;
 }
 
@@ -211,27 +211,27 @@ template {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+          background: $scrollbar-track;
   border-radius: 0.25rem;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+          background: $scrollbar-thumb;
   border-radius: 0.25rem;
   
   &:hover {
-    background: #a8a8a8;
+              background: $scrollbar-thumb-hover;
   }
 }
 
 // Selection styling
 ::selection {
-  background-color: #667eea;
+        background-color: $primary-500;
   color: white;
 }
 
 ::-moz-selection {
-  background-color: #667eea;
+        background-color: $primary-500;
   color: white;
 }
 
