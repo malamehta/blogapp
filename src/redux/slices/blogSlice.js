@@ -3,11 +3,29 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const API_URL = 'https://jsonplaceholder.typicode.com/posts';
+const POSTS_PER_PAGE = 10;
 
 // Async Thunks
 export const fetchBlogs = createAsyncThunk('blogs/fetch', async () => {
   const res = await axios.get(API_URL);
-  return res.data.slice(0, 10); // Limit to 10
+  return {
+    blogs: res.data.slice(0, POSTS_PER_PAGE),
+    hasMore: res.data.length > POSTS_PER_PAGE,
+    currentPage: 1
+  };
+});
+
+export const loadMoreBlogs = createAsyncThunk('blogs/loadMore', async (currentPage) => {
+  const res = await axios.get(API_URL);
+  const startIndex = currentPage * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
+  const newBlogs = res.data.slice(startIndex, endIndex);
+  
+  return {
+    blogs: newBlogs,
+    hasMore: endIndex < res.data.length,
+    currentPage: currentPage + 1
+  };
 });
 
 export const addBlog = createAsyncThunk('blogs/add', async (newBlog) => {
@@ -30,7 +48,10 @@ const blogSlice = createSlice({
   initialState: {
     blogs: [],
     loading: false,
+    loadingMore: false,
     error: null,
+    hasMore: true,
+    currentPage: 0,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -38,13 +59,32 @@ const blogSlice = createSlice({
       // Fetch
       .addCase(fetchBlogs.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(fetchBlogs.fulfilled, (state, action) => {
         state.loading = false;
-        state.blogs = action.payload;
+        state.blogs = action.payload.blogs;
+        state.hasMore = action.payload.hasMore;
+        state.currentPage = action.payload.currentPage;
       })
       .addCase(fetchBlogs.rejected, (state, action) => {
         state.loading = false;
+        state.error = action.error.message;
+      })
+
+      // Load More
+      .addCase(loadMoreBlogs.pending, (state) => {
+        state.loadingMore = true;
+        state.error = null;
+      })
+      .addCase(loadMoreBlogs.fulfilled, (state, action) => {
+        state.loadingMore = false;
+        state.blogs = [...state.blogs, ...action.payload.blogs];
+        state.hasMore = action.payload.hasMore;
+        state.currentPage = action.payload.currentPage;
+      })
+      .addCase(loadMoreBlogs.rejected, (state, action) => {
+        state.loadingMore = false;
         state.error = action.error.message;
       })
 

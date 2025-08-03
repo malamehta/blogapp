@@ -1,8 +1,9 @@
 // src/pages/Dashboard.jsx
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchBlogs,
+  loadMoreBlogs,
   addBlog,
   updateBlog,
   deleteBlog,
@@ -14,7 +15,7 @@ import '../assets/scss/pages/_dashboard.scss';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const { blogs, loading } = useSelector((state) => state.blogs);
+  const { blogs, loading, loadingMore, hasMore, currentPage } = useSelector((state) => state.blogs);
 
   const [editingBlog, setEditingBlog] = useState(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -23,6 +24,19 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(fetchBlogs());
   }, [dispatch]);
+
+  // Infinite scroll functionality
+  const handleScroll = useCallback((e) => {
+    const container = e.target;
+    if (
+      container.scrollTop + container.clientHeight >= container.scrollHeight - 100 && // Load when 100px from bottom
+      hasMore &&
+      !loading &&
+      !loadingMore
+    ) {
+      dispatch(loadMoreBlogs(currentPage));
+    }
+  }, [dispatch, hasMore, loading, loadingMore, currentPage]);
 
   const handleSubmit = async (blogData) => {
     setIsSubmitting(true);
@@ -99,7 +113,7 @@ const Dashboard = () => {
               </div>
             </div>
           ) : (
-            <div className="blog-list__container">
+            <div className="blog-list__container" onScroll={handleScroll}>
               {blogs.map((blog) => (
                 <div key={blog.id} className="blog-card">
                   <h3 className="blog-card__title">{blog.title}</h3>
@@ -121,6 +135,21 @@ const Dashboard = () => {
                   </div>
                 </div>
               ))}
+              
+              {/* Loading more indicator */}
+              {loadingMore && (
+                <div className="blog-list__loading-more">
+                  <div className="loading-spinner"></div>
+                  Loading more blogs...
+                </div>
+              )}
+              
+              {/* End of blogs message */}
+              {!hasMore && blogs.length > 0 && (
+                <div className="blog-list__end-message">
+                  <p>You've reached the end of the blog list!</p>
+                </div>
+              )}
             </div>
           )}
         </section>
