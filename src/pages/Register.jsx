@@ -1,9 +1,8 @@
 // src/pages/Register.jsx
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { registerUser } from '../features/auth/authSlice';
+import { registerUser } from '../redux/slices/authSlice';
 import { useNavigate, Link } from 'react-router-dom';
-import './Register.css';
 
 const Register = () => {
   const [email, setEmail] = useState('');

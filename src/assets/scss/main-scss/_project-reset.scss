@@ -1,0 +1,246 @@
+@use '../config/' as *;
+
+// Universal box-sizing reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Remove default margin and padding
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// HTML and body reset
+html {
+  font-size: $body-font-size; // Base font size
+  line-height: 1.15; // Normalize line height
+  -webkit-text-size-adjust: 100%; // Prevent adjustments of font size after orientation changes in iOS
+  -ms-text-size-adjust: 100%; // IE/Edge
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// Root element
+#root {
+  min-height: 100vh;
+  position: relative;
+}
+
+// Headings reset
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+// Paragraph reset
+p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+// Link reset
+a {
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent;
+  
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+// List reset
+ul, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+// Form elements reset
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+input,
+textarea {
+  &:focus {
+    outline: 0.2rem solid #667eea;
+    outline-offset: 0.2rem;
+  }
+}
+
+// Table reset
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+th, td {
+  padding: 0;
+  text-align: left;
+}
+
+// Image and media reset
+img,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic; // IE
+}
+
+// Code elements
+code,
+kbd,
+pre,
+samp {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-size: 1em;
+}
+
+// Remove outline on focus for mouse users
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+select:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// Ensure focus is visible for keyboard users
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 0.2rem solid #667eea;
+  outline-offset: 0.2rem;
+}
+
+// Remove default fieldset styles
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+// Details and summary reset
+details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+  cursor: pointer;
+}
+
+// Hidden attribute
+[hidden] {
+  display: none !important;
+}
+
+// Progress and meter
+progress,
+meter {
+  vertical-align: baseline;
+}
+
+// Template tag
+template {
+  display: none;
+}
+
+// Scrollbar styling (webkit browsers)
+::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 0.25rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 0.25rem;
+  
+  &:hover {
+    background: #a8a8a8;
+  }
+}
+
+// Selection styling
+::selection {
+  background-color: #667eea;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: #667eea;
+  color: white;
+}
+
+// Smooth scrolling
+html {
+  scroll-behavior: smooth;
+}
+
+// Prevent horizontal scroll
+body {
+  overflow-x: hidden;
+}

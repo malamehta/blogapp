@@ -5,9 +5,9 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import ProtectedRoute from './routes/ProtectedRoute';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
-import './App.css';
-
+import { store } from './redux/store';
+import './assets/scss/main.scss';
+import './assets/fonts/stylesheet.css';
 function App() {
   return (
     <Provider store={store}>

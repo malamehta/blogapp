@@ -1,9 +1,8 @@
 // src/pages/Login.jsx
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { loginSuccess } from '../features/auth/authSlice';
+import { loginSuccess } from '../redux/slices/authSlice';
 import { Navigate, useNavigate, Link } from 'react-router-dom';
-import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
