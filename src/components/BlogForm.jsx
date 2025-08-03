@@ -1,6 +1,5 @@
 // src/components/BlogForm.jsx
 import { useState, useEffect } from 'react';
-import '../assets/scss/components/_blog-form.scss';
 
 const BlogForm = ({ 
   editingBlog = null, 
@@ -105,7 +104,7 @@ const BlogForm = ({
           value={body}
           onChange={(e) => setBody(e.target.value)}
           disabled={loading}
-          rows={8}
+          rows={5}
         />
         {errors.body && (
           <span className="form-error">{errors.body}</span>

@@ -1,6 +1,6 @@
 // src/components/Popup.jsx
 import { useEffect } from 'react';
-import '../assets/scss/components/_popup.scss';
+
 
 const Popup = ({ 
   isOpen, 
@@ -52,21 +52,7 @@ const Popup = ({
               onClick={onClose}
               aria-label="Close popup"
             >
-              <svg 
-                width="24" 
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path 
-                  d="M18 6L6 18M6 6L18 18" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round"
-                />
-              </svg>
+            X
             </button>
           )}
         </div>
